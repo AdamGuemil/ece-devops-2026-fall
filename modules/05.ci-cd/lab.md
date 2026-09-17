@@ -6,7 +6,7 @@ Continuous Integration & Continuous Delivery (Deployment) (CI/CD)
 ## Objectives
 
 1. Part 1. Continuous Integration with GitHub Actions
-2. Part 2. Continuous Delivery (Deployment) with Heroku
+2. Part 2. Continuous Delivery (Deployment) with Render
 
 ## Before starting
 
@@ -43,25 +43,15 @@ Create a pull request to the `master` branch:
 
 5. Explore the GitHub Actions log on GitHub (under the "Actions" tab).
 
-## Part 2. Continuous Delivery (Deployment) with Heroku
+## Part 2. Continuous Delivery (Deployment) with Render and Upstash
 
-1. Create an account on [Heroku](https://heroku.com)
-
-2. Create an app on [Heroku](https://dashboard.heroku.com/new-app) and configure it.
-
-Under the "Deploy tab" do:
-
-  - sync the app with the GitHub repository
-
-3. Add Redis service to Heroku deployment - https://elements.heroku.com/addons/heroku-redis
-
-> Note. Redis service on Heroku is free, but it requires adding credit card information. Considering this limitation we will not run Redis on Heroku, and the application will be partially non-functional (it will print the "Hello world!" message on the home page, but the user API will not work). However, it will be enough to experience our CI/CD pipeline.
-
-4. Configure the workflow to deploy to Heroku using [this guide](https://github.com/marketplace/actions/deploy-to-heroku).
-
-5. Practice a regular workflow of the software development life cycle like in Part 2.
-
-6. Test your public domain on Heroku.
+1. Create an account on [Render](https://render.com/) and on [Upstash](https://upstash.com/).
+2. Create a redis database on [Upstash](https://console.upstash.com/redis). Once created, you will have informations displayed such as the database url.
+3. Create an app on [Render](https://dashboard.render.com/web/new) and configure it. You can follow [this guide](https://render.com/docs/your-first-deploy) to help you.
+> Note that the `REDIS_URL` must be defined in your Render environment variables to let Render connect to the Redis database once your application is deployed. Be carefull, you need to set the Redis url starting with `rediss://` and not `redis://`.
+4. Configure the workflow to deploy to Render using [this guide](https://render.com/docs/your-first-deploy).
+4. Practice a regular workflow of the software development life cycle like in Part 2.
+5. Test your public domain on Render.
 
 ## Bonus tasks
 
